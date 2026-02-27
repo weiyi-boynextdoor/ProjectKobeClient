@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://serkdkxfrckq" path="res://main_ui.gd" id="1"]
 [ext_resource type="AudioStream" uid="uid://dvdgl8cxx0xj6" path="res://audio/mamba.wav" id="2"]
 
-[node name="Control" type="Control" unique_id=2027432748]
+[node name="main_ui" type="Control" unique_id=2027432748]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,12 +19,13 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -148.0
-offset_top = -78.0
+offset_left = -260.0
+offset_top = -112.0
 offset_right = -25.0
 offset_bottom = -26.0
 grow_horizontal = 0
 grow_vertical = 0
+theme_override_font_sizes/font_size = 24
 text = "play"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1970930912]
