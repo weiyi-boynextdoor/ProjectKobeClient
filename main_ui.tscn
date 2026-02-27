@@ -1,9 +1,33 @@
 [gd_scene format=3 uid="uid://bibux6l51ckqw"]
 
-[node name="Node2D" type="Node2D" unique_id=1786376841]
+[ext_resource type="Script" uid="uid://serkdkxfrckq" path="res://main_ui.gd" id="1"]
+[ext_resource type="AudioStream" uid="uid://dvdgl8cxx0xj6" path="res://audio/mamba.wav" id="2"]
 
-[node name="Button" type="Button" parent="." unique_id=1222388882]
-offset_left = 916.0
-offset_top = 457.0
-offset_right = 1089.0
-offset_bottom = 578.0
+[node name="Control" type="Control" unique_id=2027432748]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1")
+
+[node name="btn_playsound" type="Button" parent="." unique_id=1326952406]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -148.0
+offset_top = -78.0
+offset_right = -25.0
+offset_bottom = -26.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "play"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1970930912]
+stream = ExtResource("2")
+
+[connection signal="pressed" from="btn_playsound" to="." method="_on_btn_playsound_pressed"]
