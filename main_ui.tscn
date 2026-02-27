@@ -28,7 +28,46 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 24
 text = "play"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1970930912]
+[node name="audio_player" type="AudioStreamPlayer" parent="." unique_id=1970930912]
 stream = ExtResource("2")
 
+[node name="btn_connect" type="Button" parent="." unique_id=492468769]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -237.0
+offset_top = 31.0
+offset_right = -31.0
+offset_bottom = 104.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 24
+text = "connect
+"
+
+[node name="text_connect_ip" type="TextEdit" parent="." unique_id=1899598809]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -884.0
+offset_top = 35.0
+offset_right = -307.0
+offset_bottom = 102.0
+theme_override_font_sizes/font_size = 24
+text = "ws://127.0.0.1:8024/ws"
+
+[node name="text_assistant_response" type="RichTextLabel" parent="." unique_id=75583829]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.517
+anchor_right = 1.0
+anchor_bottom = 0.517
+offset_left = 79.0
+offset_top = 3.6399536
+offset_right = -492.0
+offset_bottom = 69.63995
+grow_vertical = 2
+
 [connection signal="pressed" from="btn_playsound" to="." method="_on_btn_playsound_pressed"]
+[connection signal="pressed" from="btn_connect" to="." method="_on_btn_connect_pressed"]
