@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Kobe"
+run/main_scene="uid://bibux6l51ckqw"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="uid://ci07db0puifya"
 
