@@ -9,6 +9,7 @@ var connect_timer := 0.0
 
 func _process(delta: float) -> void:
 	ws.poll()
+	var last_ws_state := ws_state
 	ws_state = ws.get_ready_state()
 	match ws_state:
 		WebSocketPeer.STATE_CONNECTING:
@@ -21,6 +22,10 @@ func _process(delta: float) -> void:
 		WebSocketPeer.STATE_OPEN:
 			$btn_connect.text = "disconnect"
 			$btn_connect.disabled = false
+			if last_ws_state != WebSocketPeer.STATE_OPEN:
+				# create session
+				print("websocket connected, creating session...")
+				ws.send_text(JSON.stringify({"action": "create_session"}))
 		WebSocketPeer.STATE_CLOSING:
 			$btn_connect.text = "disconnecting..."
 			$btn_connect.disabled = true
@@ -30,8 +35,9 @@ func _process(delta: float) -> void:
 			$btn_connect.disabled = false
 
 
-func _on_btn_playsound_pressed() -> void:
-	$audio_player.play()
+func _on_btn_send_pressed() -> void:
+	# $audio_player.play()
+	pass
 
 
 func _on_btn_connect_pressed() -> void:
