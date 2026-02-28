@@ -28,6 +28,7 @@ ProjectKobeClient/
 - **Scripts**: Attach scripts directly to the relevant scene node; keep file names snake_case matching the scene
 - **Signals**: Prefer signals over direct node references for decoupled communication
 - **Node naming**: PascalCase for nodes, snake_case for variables and functions
+- **Comment** Always use English, even if I speak to you in Chinese
 
 ## Key Engine Notes
 
