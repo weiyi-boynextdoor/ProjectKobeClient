@@ -1,0 +1,16 @@
+[gd_resource type="AnimatedTexture" format=3 uid="uid://vle3p5t18ckr"]
+
+[ext_resource type="Texture2D" uid="uid://d0ltciqkntgam" path="res://textures/kobe_0.jpg" id="1_nu5j0"]
+[ext_resource type="Texture2D" uid="uid://bmxxr6ov6f1pu" path="res://textures/kobe_1.jpg" id="2_ulcj5"]
+[ext_resource type="Texture2D" uid="uid://c0hjavl4kjbbv" path="res://textures/kobe_2.jpg" id="3_6gkim"]
+
+[resource]
+frames = 4
+frame_0/texture = ExtResource("1_nu5j0")
+frame_0/duration = 0.1
+frame_1/texture = ExtResource("2_ulcj5")
+frame_1/duration = 0.1
+frame_2/texture = ExtResource("3_6gkim")
+frame_2/duration = 0.1
+frame_3/texture = ExtResource("2_ulcj5")
+frame_3/duration = 0.1

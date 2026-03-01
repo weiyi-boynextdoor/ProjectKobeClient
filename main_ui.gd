@@ -14,6 +14,8 @@ var m_session_id: String = ""
 var m_audio_buf := PackedByteArray()
 var m_audio_playback: AudioStreamGeneratorPlayback = null
 var m_audio_done := false
+var m_end_talk_timer: SceneTreeTimer = null
+var m_is_talking := false
 
 var m_audio_stream_generator := AudioStreamGenerator.new()
 
@@ -84,8 +86,6 @@ func process_websocket_message() -> void:
 			print("Audio channels set to ", m_audio_channels)
 		m_audio_buf.clear()
 		m_audio_done = false
-		$audio_player.play()
-		m_audio_playback = $audio_player.get_stream_playback()
 		print("audio start")
 	elif event == "audio_chunk":
 		var encoded: String = dict.get("data", "")
@@ -96,10 +96,31 @@ func process_websocket_message() -> void:
 			for i in byte_count:
 				decoded[i] = encoded.substr(i * 2, 2).hex_to_int()
 			m_audio_buf.append_array(decoded)
+			if not m_is_talking:
+				_begin_talk()
+				m_is_talking = true
 	elif event == "audio_done":
 		m_audio_done = true
+		m_is_talking = false
 		print("audio done, remaining bytes: ", m_audio_buf.size())
 
+
+func _begin_talk():
+	# Cancel any pending end-talk timer from a previous playback
+	if m_end_talk_timer != null:
+		if m_end_talk_timer.timeout.is_connected(_end_talk):
+			m_end_talk_timer.timeout.disconnect(_end_talk)
+		m_end_talk_timer = null
+	$audio_player.play()
+	m_audio_playback = $audio_player.get_stream_playback()
+	$img_kobe_dynamic.visible = true
+	$img_kobe_static.visible = false
+
+func _end_talk():
+	m_end_talk_timer = null
+	$audio_player.stop()
+	$img_kobe_dynamic.visible = false
+	$img_kobe_static.visible = true
 
 func _on_btn_send_pressed() -> void:
 	if m_ws_state == WebSocketPeer.STATE_OPEN and m_session_id != "":
@@ -140,6 +161,9 @@ func _feed_audio() -> void:
 	# Stop once all buffered data has been consumed
 	if m_audio_done and m_audio_buf.is_empty():
 		m_audio_playback = null
+		# Wait for the generator's internal buffer to drain before stopping
+		m_end_talk_timer = get_tree().create_timer(m_audio_stream_generator.buffer_length)
+		m_end_talk_timer.timeout.connect(_end_talk)
 
 
 func _on_btn_connect_pressed() -> void:
