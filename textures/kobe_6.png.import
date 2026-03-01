@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0ltciqkntgam"
-path="res://.godot/imported/kobe_0.jpg-061040610d4a416dad278d71ec08eca1.ctex"
+uid="uid://hcsc75tmen12"
+path="res://.godot/imported/kobe_6.png-96a1a3b59fd57516c34db867252d41a1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/kobe_0.jpg"
-dest_files=["res://.godot/imported/kobe_0.jpg-061040610d4a416dad278d71ec08eca1.ctex"]
+source_file="res://textures/kobe_6.png"
+dest_files=["res://.godot/imported/kobe_6.png-96a1a3b59fd57516c34db867252d41a1.ctex"]
 
 [params]
 

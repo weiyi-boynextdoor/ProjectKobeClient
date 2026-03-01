@@ -114,6 +114,7 @@ func _begin_talk():
 	$audio_player.play()
 	m_audio_playback = $audio_player.get_stream_playback()
 	$img_kobe_dynamic.visible = true
+	($img_kobe_dynamic.texture as AnimatedTexture).current_frame = 0
 	$img_kobe_static.visible = false
 
 func _end_talk():
