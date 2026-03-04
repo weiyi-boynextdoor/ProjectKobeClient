@@ -19,13 +19,14 @@ var is_talking: = false
 
 var audio_stream_generator: AudioStreamGenerator = AudioStreamGenerator.new()
 
-@onready var btn_connect := $btn_connect
+@onready var btn_connect := $Top/btn_connect
 @onready var audio_player := $audio_player
 @onready var img_kobe_dynamic := $img_kobe_dynamic
 @onready var img_kobe_static := $img_kobe_static
 @onready var text_assistant_response := $text_assistant_response
 @onready var text_user_input := $text_user_input
-@onready var text_connect_ip := $text_connect_ip
+@onready var text_connect_ip := $Top/text_connect_ip
+@onready var text_connect_port := $Top/text_connect_port
 
 
 func _ready() -> void:
@@ -180,7 +181,7 @@ func _feed_audio() -> void:
 func _on_btn_connect_pressed() -> void:
 	match websocket.get_ready_state():
 		WebSocketPeer.STATE_CLOSED:
-			var url: String = text_connect_ip.text.strip_edges()
+			var url: String = "ws://{0}:{1}/ws".format([text_connect_ip.text.strip_edges(), text_connect_port.text.strip_edges()])
 			connect_timer = 0.0
 			websocket.connect_to_url(url)
 		WebSocketPeer.STATE_OPEN:

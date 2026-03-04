@@ -33,20 +33,6 @@ text = "send"
 [node name="audio_player" type="AudioStreamPlayer" parent="." unique_id=1970930912]
 stream = ExtResource("2")
 
-[node name="btn_connect" type="Button" parent="." unique_id=492468769]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -237.0
-offset_top = 31.0
-offset_right = -31.0
-offset_bottom = 104.0
-grow_horizontal = 0
-theme_override_font_sizes/font_size = 24
-text = "connect
-"
-
 [node name="text_assistant_response" type="RichTextLabel" parent="." unique_id=75583829]
 layout_mode = 1
 anchors_preset = -1
@@ -81,19 +67,6 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 24
 placeholder_text = "What can you say?"
 
-[node name="text_connect_ip" type="LineEdit" parent="." unique_id=747993994]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -1010.0
-offset_top = 28.0
-offset_right = -293.0
-offset_bottom = 109.0
-theme_override_font_sizes/font_size = 24
-text = "ws://127.0.0.1:8024/ws"
-placeholder_text = "input server addr here"
-
 [node name="img_kobe_static" type="TextureRect" parent="." unique_id=2075090691]
 layout_mode = 1
 anchors_preset = -1
@@ -125,5 +98,46 @@ grow_vertical = 2
 texture = ExtResource("4_4uoxc")
 stretch_mode = 5
 
+[node name="Top" type="HBoxContainer" parent="." unique_id=1241043287]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_left = 799.0
+offset_top = 14.0
+offset_right = -2.0
+offset_bottom = 119.0
+alignment = 2
+
+[node name="Label1" type="Label" parent="Top" unique_id=975245532]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "IP"
+
+[node name="text_connect_ip" type="LineEdit" parent="Top" unique_id=747993994]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "127.0.0.1"
+placeholder_text = "input server addr here"
+
+[node name="Label2" type="Label" parent="Top" unique_id=2000143342]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Port"
+
+[node name="text_connect_port" type="LineEdit" parent="Top" unique_id=552051051]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "8024"
+placeholder_text = "input server addr here"
+
+[node name="btn_connect" type="Button" parent="Top" unique_id=492468769]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "connect
+"
+
 [connection signal="pressed" from="btn_send" to="." method="_on_btn_send_pressed"]
-[connection signal="pressed" from="btn_connect" to="." method="_on_btn_connect_pressed"]
+[connection signal="pressed" from="Top/btn_connect" to="." method="_on_btn_connect_pressed"]
