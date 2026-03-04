@@ -29,10 +29,30 @@ var audio_stream_generator: AudioStreamGenerator = AudioStreamGenerator.new()
 @onready var text_connect_port := $Top/text_connect_port
 
 
+const CONFIG_PATH := "user://settings.cfg"
+const CONFIG_SECTION := "connection"
+
+
 func _ready() -> void:
 	audio_stream_generator.mix_rate = audio_sample_rate
 	audio_stream_generator.buffer_length = 0.2  # 200ms buffer to reduce stuttering
 	audio_player.stream = audio_stream_generator
+	_load_config()
+
+
+func _load_config() -> void:
+	var config := ConfigFile.new()
+	if config.load(CONFIG_PATH) != OK:
+		return
+	text_connect_ip.text = config.get_value(CONFIG_SECTION, "ip", text_connect_ip.text)
+	text_connect_port.text = config.get_value(CONFIG_SECTION, "port", text_connect_port.text)
+
+
+func _save_config() -> void:
+	var config := ConfigFile.new()
+	config.set_value(CONFIG_SECTION, "ip", text_connect_ip.text.strip_edges())
+	config.set_value(CONFIG_SECTION, "port", text_connect_port.text.strip_edges())
+	config.save(CONFIG_PATH)
 
 
 func _process(delta: float) -> void:
@@ -181,6 +201,7 @@ func _feed_audio() -> void:
 func _on_btn_connect_pressed() -> void:
 	match websocket.get_ready_state():
 		WebSocketPeer.STATE_CLOSED:
+			_save_config()
 			var url: String = "ws://{0}:{1}/ws".format([text_connect_ip.text.strip_edges(), text_connect_port.text.strip_edges()])
 			connect_timer = 0.0
 			websocket.connect_to_url(url)
