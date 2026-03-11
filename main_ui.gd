@@ -9,7 +9,6 @@ var bytes_per_sample := 2  # 16-bit PCM
 var websocket := WebSocketPeer.new()
 var ws_state := WebSocketPeer.STATE_CLOSED
 var connect_timer := 0.0
-var session_id := ""
 
 var audio_buf: = PackedByteArray()
 var audio_playback: AudioStreamGeneratorPlayback = null
@@ -58,7 +57,6 @@ func _save_config() -> void:
 func _process(delta: float) -> void:
 	_feed_audio()
 	websocket.poll()
-	var last_ws_state := ws_state
 	ws_state = websocket.get_ready_state()
 	match ws_state:
 		WebSocketPeer.STATE_CONNECTING:
@@ -71,10 +69,6 @@ func _process(delta: float) -> void:
 		WebSocketPeer.STATE_OPEN:
 			btn_connect.text = "disconnect"
 			btn_connect.disabled = false
-			if last_ws_state != WebSocketPeer.STATE_OPEN:
-				# create session
-				print("websocket connected, creating session...")
-				websocket.send_text(JSON.stringify({"action": "create_session"}))
 			while websocket.get_available_packet_count() > 0:
 				_process_websocket_message()
 		WebSocketPeer.STATE_CLOSING:
@@ -84,7 +78,6 @@ func _process(delta: float) -> void:
 			connect_timer = 0.0
 			btn_connect.text = "connect"
 			btn_connect.disabled = false
-			session_id = ""
 
 
 func _process_websocket_message() -> void:
@@ -98,12 +91,7 @@ func _process_websocket_message() -> void:
 	var dict := data as Dictionary
 	var event: String = dict.get("event", "")
 
-	if session_id.is_empty() and event == "session_created":
-		# expect session id
-		if dict.has("session_id"):
-			session_id = dict["session_id"]
-			print("session_id: ", session_id)
-	elif event == "text_response":
+	if event == "text_response":
 		text_assistant_response.text = "Kobe: " + dict.get("content")
 	elif event == "audio_start":
 		if dict.has("sample_rate"):
@@ -155,9 +143,9 @@ func _end_talk() -> void:
 
 
 func _on_btn_send_pressed() -> void:
-	if ws_state == WebSocketPeer.STATE_OPEN and session_id != "":
+	if ws_state == WebSocketPeer.STATE_OPEN:
 		var input_text: String = text_user_input.text.strip_edges()
-		var message := {"action": "chat", "session_id": session_id, "message": input_text}
+		var message := {"action": "chat", "message": input_text}
 		websocket.send_text(JSON.stringify(message))
 
 
