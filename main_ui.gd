@@ -195,3 +195,12 @@ func _on_btn_connect_pressed() -> void:
 			websocket.connect_to_url(url)
 		WebSocketPeer.STATE_OPEN:
 			websocket.close()
+
+func _input(event):
+	if event is InputEventMouseButton and event.pressed:
+		var focus_owner = get_viewport().gui_get_focus_owner()
+		if focus_owner is LineEdit or focus_owner is TextEdit:
+			# 检查点击位置是否在输入框之外
+			if not focus_owner.get_global_rect().has_point(event.position):
+				focus_owner.release_focus()
+				DisplayServer.virtual_keyboard_hide()
