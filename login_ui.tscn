@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://bibux6l51ckqw"]
 
-[ext_resource type="Script" uid="uid://serkdkxfrckq" path="res://main_ui.gd" id="1"]
-[ext_resource type="AudioStream" uid="uid://dvdgl8cxx0xj6" path="res://audio/mamba.wav" id="2"]
-[ext_resource type="Texture2D" uid="uid://cq8wumy7a4oie" path="res://textures/kobe.jpg" id="3_ktt6o"]
-[ext_resource type="Texture2D" uid="uid://vle3p5t18ckr" path="res://textures/kobe_speak.tres" id="4_4uoxc"]
+[ext_resource type="Script" uid="uid://serkdkxfrckq" path="res://login_ui.gd" id="1_qal1t"]
+[ext_resource type="AudioStream" uid="uid://dvdgl8cxx0xj6" path="res://audio/mamba.wav" id="2_adnai"]
+[ext_resource type="Texture2D" uid="uid://cq8wumy7a4oie" path="res://textures/kobe.jpg" id="3_kvo85"]
+[ext_resource type="Texture2D" uid="uid://vle3p5t18ckr" path="res://textures/kobe_speak.tres" id="4_0ocvi"]
 
-[node name="main_ui" type="Control" unique_id=2027432748]
+[node name="login_ui" type="Control" unique_id=2027432748]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,7 +14,7 @@ offset_right = -14.0
 offset_bottom = 10.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1")
+script = ExtResource("1_qal1t")
 
 [node name="btn_send" type="Button" parent="." unique_id=1326952406]
 layout_mode = 1
@@ -33,7 +33,7 @@ theme_override_font_sizes/font_size = 24
 text = "send"
 
 [node name="audio_player" type="AudioStreamPlayer" parent="." unique_id=1970930912]
-stream = ExtResource("2")
+stream = ExtResource("2_adnai")
 
 [node name="text_assistant_response" type="RichTextLabel" parent="." unique_id=75583829]
 layout_mode = 1
@@ -82,7 +82,7 @@ offset_right = 284.0
 offset_bottom = -1108.0
 grow_horizontal = 0
 grow_vertical = 2
-texture = ExtResource("3_ktt6o")
+texture = ExtResource("3_kvo85")
 stretch_mode = 5
 
 [node name="img_kobe_dynamic" type="TextureRect" parent="." unique_id=10298939]
@@ -98,7 +98,7 @@ offset_right = 284.0
 offset_bottom = -1108.0
 grow_horizontal = 0
 grow_vertical = 2
-texture = ExtResource("4_4uoxc")
+texture = ExtResource("4_0ocvi")
 stretch_mode = 5
 
 [node name="Top" type="HBoxContainer" parent="." unique_id=1241043287]
