@@ -1,9 +1,7 @@
 [gd_scene format=3 uid="uid://bibux6l51ckqw"]
 
 [ext_resource type="Script" uid="uid://serkdkxfrckq" path="res://login_ui.gd" id="1_qal1t"]
-[ext_resource type="AudioStream" uid="uid://dvdgl8cxx0xj6" path="res://audio/mamba.wav" id="2_adnai"]
-[ext_resource type="Texture2D" uid="uid://cq8wumy7a4oie" path="res://textures/kobe.jpg" id="3_kvo85"]
-[ext_resource type="Texture2D" uid="uid://vle3p5t18ckr" path="res://textures/kobe_speak.tres" id="4_0ocvi"]
+[ext_resource type="Texture2D" uid="uid://q5fhs8agtvq2" path="res://kobe_background.jpg" id="4_qal1t"]
 
 [node name="login_ui" type="Control" unique_id=2027432748]
 layout_mode = 3
@@ -16,101 +14,21 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qal1t")
 
-[node name="btn_send" type="Button" parent="." unique_id=1326952406]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -303.0
-offset_top = -208.0
-offset_right = -68.0
-offset_bottom = -122.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_font_sizes/font_size = 24
-text = "send"
-
-[node name="audio_player" type="AudioStreamPlayer" parent="." unique_id=1970930912]
-stream = ExtResource("2_adnai")
-
-[node name="text_assistant_response" type="RichTextLabel" parent="." unique_id=75583829]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.517
-anchor_right = 1.0
-anchor_bottom = 0.517
-offset_left = 79.0
-offset_top = 3.6399536
-offset_right = -49.0
-offset_bottom = 538.18994
-grow_vertical = 2
-theme_override_font_sizes/normal_font_size = 24
-theme_override_font_sizes/bold_font_size = 24
-theme_override_font_sizes/bold_italics_font_size = 24
-theme_override_font_sizes/italics_font_size = 24
-theme_override_font_sizes/mono_font_size = 24
-text = "Kobe: "
-fit_content = true
-
-[node name="text_user_input" type="LineEdit" parent="." unique_id=1546917745]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -894.0
-offset_top = -325.0
-offset_right = -165.5
-offset_bottom = -242.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_font_sizes/font_size = 24
-placeholder_text = "What can you say?"
-
-[node name="img_kobe_static" type="TextureRect" parent="." unique_id=2075090691]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -228.0
-offset_top = 310.0
-offset_right = 284.0
-offset_bottom = -1108.0
-grow_horizontal = 0
-grow_vertical = 2
-texture = ExtResource("3_kvo85")
-stretch_mode = 5
-
-[node name="img_kobe_dynamic" type="TextureRect" parent="." unique_id=10298939]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -228.0
-offset_top = 310.0
-offset_right = 284.0
-offset_bottom = -1108.0
-grow_horizontal = 0
-grow_vertical = 2
-texture = ExtResource("4_0ocvi")
-stretch_mode = 5
+[node name="KobeBackground" type="Sprite2D" parent="." unique_id=259484177]
+position = Vector2(544, 964)
+scale = Vector2(0.88, 0.822)
+texture = ExtResource("4_qal1t")
 
 [node name="Top" type="HBoxContainer" parent="." unique_id=1241043287]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.05
+anchor_top = 1.0
 anchor_right = 1.0
-anchor_bottom = 0.05
+anchor_bottom = 1.0
 offset_left = 153.0
+offset_top = -1106.0
 offset_right = -126.0
-offset_bottom = 80.0
-alignment = 2
+offset_bottom = -997.0
 
 [node name="Label1" type="Label" parent="Top" unique_id=975245532]
 layout_mode = 2
@@ -145,5 +63,4 @@ theme_override_font_sizes/font_size = 24
 text = "connect
 "
 
-[connection signal="pressed" from="btn_send" to="." method="_on_btn_send_pressed"]
 [connection signal="pressed" from="Top/btn_connect" to="." method="_on_btn_connect_pressed"]

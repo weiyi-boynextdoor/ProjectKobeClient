@@ -12,8 +12,7 @@ var websocket: WebSocketPeer = WebSocketPeer.new()
 var ws_state: int = WebSocketPeer.STATE_CLOSED
 var connect_timer: float = 0.0
 
-
-func poll(delta: float) -> void:
+func _process(delta: float) -> void:
 	websocket.poll()
 
 	var previous_state: int = ws_state
