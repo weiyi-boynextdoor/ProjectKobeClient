@@ -37,7 +37,7 @@ func _process(delta: float) -> void:
 func connect_to_server(ip: String, port: String) -> void:
 	if websocket.get_ready_state() != WebSocketPeer.STATE_CLOSED:
 		return
-	var url := "ws://{0}:{1}/ws".format([ip.strip_edges(), port.strip_edges()])
+	var url := "ws://{0}:{1}".format([ip.strip_edges(), port.strip_edges()])
 	connect_timer = 0.0
 	websocket.connect_to_url(url)
 	ws_state = websocket.get_ready_state()

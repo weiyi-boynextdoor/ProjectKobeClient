@@ -28,7 +28,6 @@ func _ready() -> void:
 	audio_stream_generator.mix_rate = audio_sample_rate
 	audio_stream_generator.buffer_length = 0.2  # 200ms buffer to reduce stuttering
 	network_manager.connection_state_changed.connect(_on_connection_state_changed)
-	_update_connection_button(network_manager.get_connection_state())
 	_load_config()
 
 
@@ -57,10 +56,6 @@ func _on_btn_connect_pressed() -> void:
 
 
 func _on_connection_state_changed(state: int) -> void:
-	_update_connection_button(state)
-
-
-func _update_connection_button(state: int) -> void:
 	match state:
 		WebSocketPeer.STATE_CONNECTING:
 			btn_connect.text = "connecting..."
@@ -68,6 +63,7 @@ func _update_connection_button(state: int) -> void:
 		WebSocketPeer.STATE_OPEN:
 			btn_connect.text = "disconnect"
 			btn_connect.disabled = false
+			get_tree().change_scene_to_file("res://chat_ui.tscn")
 		WebSocketPeer.STATE_CLOSING:
 			btn_connect.text = "disconnecting..."
 			btn_connect.disabled = true

@@ -14,10 +14,18 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qal1t")
 
-[node name="KobeBackground" type="Sprite2D" parent="." unique_id=259484177]
-position = Vector2(544, 964)
-scale = Vector2(0.88, 0.822)
+[node name="TextureRect" type="TextureRect" parent="." unique_id=475454937]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 14.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("4_qal1t")
+expand_mode = 1
+stretch_mode = 6
 
 [node name="Top" type="HBoxContainer" parent="." unique_id=1241043287]
 layout_mode = 1
