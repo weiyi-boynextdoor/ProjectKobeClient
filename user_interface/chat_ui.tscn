@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://rplycqpu6eo6"]
 
-[ext_resource type="Script" uid="uid://cn420wp61hjww" path="res://chat_ui.gd" id="1_kwp2c"]
+[ext_resource type="Script" uid="uid://cn420wp61hjww" path="res://user_interface/chat_ui.gd" id="1_kwp2c"]
 [ext_resource type="AudioStream" uid="uid://dvdgl8cxx0xj6" path="res://audio/mamba.wav" id="1_tl3l8"]
 [ext_resource type="Texture2D" uid="uid://fflyepm7bpq5" path="res://textures/male.png" id="2_4hjr4"]
 

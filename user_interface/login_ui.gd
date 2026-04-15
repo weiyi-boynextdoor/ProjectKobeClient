@@ -63,7 +63,7 @@ func _on_connection_state_changed(state: int) -> void:
 		WebSocketPeer.STATE_OPEN:
 			btn_connect.text = "disconnect"
 			btn_connect.disabled = false
-			get_tree().change_scene_to_file("res://chat_ui.tscn")
+			get_tree().change_scene_to_file("res://user_interface/chat_ui.tscn")
 		WebSocketPeer.STATE_CLOSING:
 			btn_connect.text = "disconnecting..."
 			btn_connect.disabled = true

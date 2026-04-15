@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bibux6l51ckqw"]
 
-[ext_resource type="Script" uid="uid://serkdkxfrckq" path="res://login_ui.gd" id="1_qal1t"]
-[ext_resource type="Texture2D" uid="uid://q5fhs8agtvq2" path="res://kobe_background.jpg" id="4_qal1t"]
+[ext_resource type="Script" uid="uid://serkdkxfrckq" path="res://user_interface/login_ui.gd" id="1_qal1t"]
+[ext_resource type="Texture2D" uid="uid://q5fhs8agtvq2" path="res://textures/kobe_background.jpg" id="4_qal1t"]
 
 [node name="login_ui" type="Control" unique_id=2027432748]
 layout_mode = 3
