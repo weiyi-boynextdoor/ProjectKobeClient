@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://dp4qyg2dg2bqw"]
+
+[ext_resource type="Texture2D" uid="uid://cq8wumy7a4oie" path="res://textures/kobe.jpg" id="1_3ysie"]
+[ext_resource type="Script" uid="uid://cxn15ofjfr162" path="res://user_interface/chat_item_other.gd" id="1_v3xpk"]
+[ext_resource type="Texture2D" uid="uid://bgp84qjs0kt64" path="res://textures/play_icon.png" id="2_3wme4"]
+
+[node name="ChatItemOther" type="Control" unique_id=4785845]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -1840.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_v3xpk")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1727039167]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer" unique_id=1434335071]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture = ExtResource("1_3ysie")
+expand_mode = 1
+
+[node name="text" type="Label" parent="HBoxContainer" unique_id=339657835]
+layout_mode = 2
+text = "Man! what can i say? mamba out!
+Man! what can i say? mamba out!"
+autowrap_mode = 3
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer" unique_id=909692236]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture = ExtResource("2_3wme4")
+expand_mode = 1

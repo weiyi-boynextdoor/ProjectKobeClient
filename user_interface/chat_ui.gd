@@ -1,5 +1,7 @@
 extends Control
 
+const CHAT_ITEM_OTHER_SCENE := preload("res://user_interface/chat_item_other.tscn")
+
 ## Adjust these to match the server's audio format
 var audio_sample_rate := 32000
 var audio_channels := 1  # 1=Mono, 2=Stereo
@@ -18,6 +20,7 @@ var audio_stream_generator: AudioStreamGenerator = AudioStreamGenerator.new()
 @onready var audio_player := $audio_player
 @onready var text_assistant_response := $text_assistant_response
 @onready var text_user_input := $text_user_input
+@onready var chat_container := $MarginContainer/ScrollContainer/chat_container
 
 
 const CONFIG_PATH := "user://settings.cfg"
@@ -33,6 +36,9 @@ func _ready() -> void:
 	network_manager.audio_started.connect(_on_audio_started)
 	network_manager.audio_chunk_received.connect(_on_audio_chunk_received)
 	network_manager.audio_finished.connect(_on_audio_finished)
+	
+	for child in chat_container.get_children():
+		child.queue_free()
 
 
 func _process(delta: float) -> void:
@@ -103,7 +109,9 @@ func _on_connection_state_changed(state: int) -> void:
 
 
 func _on_text_response_received(content: String) -> void:
-	text_assistant_response.text = "Kobe: " + content
+	var chat_item: Control = CHAT_ITEM_OTHER_SCENE.instantiate()
+	chat_container.add_child(chat_item)
+	chat_item.set_text(content)
 
 
 func _on_audio_started(sample_rate: int, channels: int) -> void:

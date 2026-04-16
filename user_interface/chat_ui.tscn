@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cn420wp61hjww" path="res://user_interface/chat_ui.gd" id="1_kwp2c"]
 [ext_resource type="AudioStream" uid="uid://dvdgl8cxx0xj6" path="res://audio/mamba.wav" id="1_tl3l8"]
 [ext_resource type="Texture2D" uid="uid://fflyepm7bpq5" path="res://textures/male.png" id="2_4hjr4"]
+[ext_resource type="PackedScene" uid="uid://dp4qyg2dg2bqw" path="res://user_interface/chat_item_other.tscn" id="4_15lnk"]
 
 [node name="ChatUi" type="Control" unique_id=1781560637]
 layout_mode = 3
@@ -34,16 +35,15 @@ fit_content = true
 
 [node name="text_user_input" type="LineEdit" parent="." unique_id=968898368]
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
+anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -914.0
-offset_top = -164.0
-offset_right = -185.5
-offset_bottom = -81.0
-grow_horizontal = 0
+offset_left = 151.0
+offset_top = -145.0
+offset_right = -200.5
+offset_bottom = -62.0
+grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 24
 placeholder_text = "What can you say?"
@@ -55,12 +55,36 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -168.0
-offset_top = -179.0
-offset_right = -68.0
-offset_bottom = -79.0
+offset_left = -178.0
+offset_top = -169.0
+offset_right = -70.0
+offset_bottom = -61.0
 grow_horizontal = 0
 grow_vertical = 0
 icon = ExtResource("2_4hjr4")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1840531622]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 66.0
+offset_top = 71.0
+offset_right = -66.0
+offset_bottom = -180.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer" unique_id=1508166500]
+layout_mode = 2
+
+[node name="chat_container" type="VBoxContainer" parent="MarginContainer/ScrollContainer" unique_id=1905536492]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+
+[node name="ChatItemOther" parent="MarginContainer/ScrollContainer/chat_container" unique_id=4785845 instance=ExtResource("4_15lnk")]
+layout_mode = 2
+
+[node name="ChatItemOther2" parent="MarginContainer/ScrollContainer/chat_container" unique_id=1139317520 instance=ExtResource("4_15lnk")]
+layout_mode = 2
 
 [connection signal="pressed" from="btn_send" to="." method="_on_btn_send_pressed"]
