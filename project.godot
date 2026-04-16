@@ -18,6 +18,7 @@ config/icon="uid://ci07db0puifya"
 [autoload]
 
 NetworkManager="*uid://dtsaua4eiacm8"
+AudioManager="*uid://b1fk28icvo5ek"
 
 [display]
 

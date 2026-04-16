@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://rplycqpu6eo6"]
 
 [ext_resource type="Script" uid="uid://cn420wp61hjww" path="res://user_interface/chat_ui.gd" id="1_kwp2c"]
-[ext_resource type="AudioStream" uid="uid://dvdgl8cxx0xj6" path="res://audio/mamba.wav" id="1_tl3l8"]
 [ext_resource type="Texture2D" uid="uid://fflyepm7bpq5" path="res://textures/male.png" id="2_4hjr4"]
 [ext_resource type="PackedScene" uid="uid://dp4qyg2dg2bqw" path="res://user_interface/chat_item_other.tscn" id="4_15lnk"]
 
@@ -14,8 +13,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_kwp2c")
 
-[node name="audio_player" type="AudioStreamPlayer" parent="." unique_id=1229694403]
-stream = ExtResource("1_tl3l8")
+[node name="AudioManager" parent="." instance=ExtResource("3_1bjto")]
 
 [node name="text_user_input" type="LineEdit" parent="." unique_id=968898368]
 layout_mode = 1
