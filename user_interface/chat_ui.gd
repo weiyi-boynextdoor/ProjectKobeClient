@@ -37,6 +37,7 @@ func _ready() -> void:
 	network_manager.audio_chunk_received.connect(_on_audio_chunk_received)
 	network_manager.audio_finished.connect(_on_audio_finished)
 	
+	# clean up
 	for child in chat_container.get_children():
 		child.queue_free()
 

@@ -17,22 +17,6 @@ script = ExtResource("1_kwp2c")
 [node name="audio_player" type="AudioStreamPlayer" parent="." unique_id=1229694403]
 stream = ExtResource("1_tl3l8")
 
-[node name="text_assistant_response" type="RichTextLabel" parent="." unique_id=2055929899]
-layout_mode = 1
-anchors_preset = -1
-offset_left = 106.0
-offset_top = 810.0
-offset_right = 917.0
-offset_bottom = 1344.55
-grow_vertical = 2
-theme_override_font_sizes/normal_font_size = 24
-theme_override_font_sizes/bold_font_size = 24
-theme_override_font_sizes/bold_italics_font_size = 24
-theme_override_font_sizes/italics_font_size = 24
-theme_override_font_sizes/mono_font_size = 24
-text = "Kobe: "
-fit_content = true
-
 [node name="text_user_input" type="LineEdit" parent="." unique_id=968898368]
 layout_mode = 1
 anchors_preset = 12
